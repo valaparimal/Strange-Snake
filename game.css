@@ -1,0 +1,170 @@
+
+@media (min-width: 1050px) {
+
+    *{
+        padding: 0%;
+        margin:0%;
+    }
+    #msg{
+        display: none;
+    }
+    body{
+        text-align: center;
+    }
+    header{
+        margin:2vh;
+    }
+    .backImage-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #before-backImage{
+        width: 50rem;
+        height: 37.5rem;
+        background-image: url("snake-game-firsh-background.jpeg");
+        background-size: contain;
+    }
+    #after-backImage{
+        margin-right: 2rem;
+        width: 100rem;
+        height: 33.8rem;
+        background-image: url("snake-game-second-background.1.jpg");
+        background-size: contain;
+    }
+    
+    .before-game-container{
+        display: none;
+        
+    }
+    .after-game-container{
+        position: absolute;
+        top:9.5%;
+        left:27%;
+        height:80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .game-box{
+        background: linear-gradient(lightblue,lightgreen,yellow,green);
+        height:80vh;
+        width:80vh;
+        display: grid;
+        grid-template-rows:repeat(18,1fr);
+        grid-template-columns:repeat(18,1fr);
+    }
+    .playBtn-container{
+        position: absolute;
+        top:0%;
+        height:100%;
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #playBtn{
+        height:6rem;
+        width:10rem;
+        font-size: 3rem;
+        background:linear-gradient(to right,blue,lightblue,yellow,lightgreen,green);
+        border-radius: 3rem;
+        border:2px solid white;
+    }
+    #playBtn:hover{
+        cursor:pointer;
+        font-size: 4rem;
+    }
+    
+    .before-gameOver-container{
+        display:none;
+    }
+    .after-gameOver-container{
+        position: absolute;
+        top:0%;
+        height:100%;
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #gameOver{
+        height:6rem;
+        width:15rem;
+        font-size: 3rem;
+        background:linear-gradient(to right,blue,lightblue,yellow,lightgreen,green);
+        border-radius: 3rem;
+        border:2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #score{
+        position:absolute;
+        top:5%;
+        right:5%;
+        background-color: rgb(79, 132, 178);
+        font-size: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+    
+    
+    #hiscore{
+        position:absolute;
+        top:20%;
+        right:5%;
+        background-color: rgb(79, 132, 178);
+        font-size: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    #reset-hiscore{
+        position:absolute;
+        top:35%;
+        right:5%;
+        background-color: rgb(79, 132, 178);
+        font-size: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+    #reset-hiscore:hover{
+        opacity: 50%;
+        cursor:grabbing;
+        color:white;
+    }
+    
+
+    .musicBtn{
+        font-size: 4rem; 
+        position: absolute; 
+        top:1%; 
+        left:2%;
+        height: 5rem;
+        width:7rem;
+    }
+    .allMusicBtn{
+        font-size: 4rem; 
+        position: absolute; 
+        top:13%; 
+        left:2%;
+        height: 5rem;
+        width:7rem;
+    }
+
+    #help{
+        position: absolute;
+        bottom : 1%;
+        font-size: 2rem;
+        background-color: aqua;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        border:none;
+    }
+    #help:hover{
+        opacity: 50%;
+        cursor: help;
+    }
+  }
