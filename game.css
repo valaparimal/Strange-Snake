@@ -25,13 +25,13 @@
         background-image: url("snake-game-firsh-background.jpeg");
         background-size: contain;
     }
-    #after-backImage{
+    /* #after-backImage{
         margin-right: 2rem;
         width: 100rem;
         height: 33.8rem;
         background-image: url("snake-game-second-background.1.jpg");
         background-size: contain;
-    }
+    } */
     
     .before-game-container{
         display: none;
@@ -39,20 +39,22 @@
     }
     .after-game-container{
         position: absolute;
-        top:9.5%;
-        left:27%;
-        height:80vh;
+        /* top:9.5%; */
+        /* left:27%; */
+        left: 0%;
+        top: 0%;
+        /* height:80vh; */
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .game-box{
         background: linear-gradient(lightblue,lightgreen,yellow,green);
-        height:80vh;
-        width:80vh;
+        height:100vh;
+        width:100vw;
         display: grid;
         grid-template-rows:repeat(18,1fr);
-        grid-template-columns:repeat(18,1fr);
+        grid-template-columns:repeat(30,1fr);
     }
     .playBtn-container{
         position: absolute;
@@ -98,6 +100,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    #gameOver:hover{
+        font-size: 3.1rem;
     }
     
     #score{

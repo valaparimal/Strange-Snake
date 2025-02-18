@@ -1,8 +1,12 @@
 let food=document.createElement("div");
 let gameBox=document.querySelector(".game-box");
 let temptime=0;
-let row=0,doun=0;right=1,flag=0,speed=100,ismusic=1,f=0;
+let row=1,doun=0;right=1,flag=0,speed=100,ismusic=1,f=0;
 let snack=[{x:1,y:1,snackHead:document.createElement("div")}];
+const totalColumn = 30;
+const totalRow = 18;
+let scoreDiv = document.querySelector("#score");
+let isGameContinue = true;
 
 
 let HiScore= localStorage.getItem("HiScore");
@@ -22,9 +26,11 @@ function createHead(){
     snack[0].snackHead.style.backgroundImage='linear-gradient(to right,blue,lightgreen,lightblue,pink,red)';
     snack[0].snackHead.style.boxShadow="0 0 10px green";
     snack[0].snackHead.style.borderRadius="30%";
-    snack[0].snackHead.style.gridRowStart=snack[0].x;
-    snack[0].snackHead.style.gridColumnStart=snack[0].y;
-    gameBox.append(snack[0].snackHead);
+    // snack[0].snackHead.style.gridRowStart=snack[0].x;
+    // snack[0].snackHead.style.gridColumnStart=snack[0].y;
+    snack[0].snackHead.style.gridRowStart=0;
+    snack[0].snackHead.style.gridColumnStart=0;
+    gameBox.appendChild(snack[0].snackHead);
 }
 
 
@@ -32,15 +38,15 @@ function creatFood(){
     food.style.backgroundImage='linear-gradient(to top,white,red,blue,gold,green,white)';
     food.style.borderRadius="50%";
     food.style.boxShadow="0 0 10px black";
-    food.style.gridRowStart=Math.floor(Math.random()*17)+1;
-    food.style.gridColumnStart=Math.floor(Math.random()*17)+1;
+    food.style.gridRowStart=Math.floor(Math.random()*totalRow-1)+1;
+    food.style.gridColumnStart=Math.floor(Math.random()*totalColumn-1)+1;
 
-    for(let i=0;i<snack.length-1;i++)
+    for(let i=0;i<snack.length;i++)
     {
         if(food.style.gridRowStart == snack[i].x && food.style.gridColumnStart == snack[i].y)
         {
             creatFood();
-            break;
+            return;
         }
     }
     gameBox.appendChild(food);
@@ -49,18 +55,8 @@ function creatFood(){
 
 
 function headIncreamenter(){
+    console.log(snack[0].x+"    "+snack[0].y);
     if(row)
-    {
-        if(doun)
-        {
-            snack[0].x++;
-        }
-        else
-        {
-            snack[0].x--;
-        }
-    }
-    else
     {
         if(right)
         {
@@ -71,8 +67,38 @@ function headIncreamenter(){
             snack[0].y--;
         }
     }
+    else
+    {
+        if(doun)
+        {
+            snack[0].x++;
+        }
+        else
+        {
+            snack[0].x--;
+        }
+    }
     snack[0].snackHead.style.gridRowStart=snack[0].x;
     snack[0].snackHead.style.gridColumnStart=snack[0].y;
+
+    isGameContinue = gameOver();
+    // console.log(snack[0].x+"    "+snack[0].y);
+    if(snack[0].x>=totalRow && row===0)
+        {
+            snack[0].x=0;   
+        }
+        else if(snack[0].y>=totalColumn && row===1)
+        {
+            snack[0].y=0;
+        }
+        else if(snack[0].x<=0 && row===0)
+        {
+            snack[0].x=totalRow;
+        }
+        else if(snack[0].y<=0 && row===1)
+        {
+            snack[0].y=totalColumn;
+        }
 }
 
 
@@ -80,22 +106,6 @@ function headIncreamenter(){
 
 function gameOver(){
 
-    if(snack[0].x>18)
-    {
-        snack[0].x=0;   
-    }
-    else if(snack[0].y>18)
-    {
-        snack[0].y=0;
-    }
-    else if(snack[0].x<0)
-    {
-        snack[0].x=18;
-    }
-    else if(snack[0].y<0)
-    {
-        snack[0].y=18;
-    }
     let i=1;
     for(i=1;i<snack.length;i++)
     {
@@ -127,12 +137,12 @@ function gameOver(){
             window.addEventListener("keydown",()=>{
                 window.location.reload();
             });
+            return false;
         }
     }
-    if(i===snack.length)
-    {
-        return true;
-    }
+
+    return true;
+    
 }
 
 
@@ -190,11 +200,14 @@ function backMusic()
 
 // loop
 
- function main(ctime){
+ async function main(ctime){
 
-    if(gameOver())
+    if(isGameContinue)
     {
-        window.requestAnimationFrame(main);
+        window.requestAnimationFrame(main);         //window.setInterval(function,milisecons); 
+        // if(prompt("HI") == null){
+        //     console.log("null");
+        // }
     }
 
     // speed control
@@ -211,7 +224,7 @@ function backMusic()
     {
 
         // move the snake
-            for(let i=snack.length-1;i>=1;i--)
+            for(let i=snack.length-1;i>0;i--)
             {
                 snack[i].snackHead.style.backgroundImage="unset";
                 snack[i].snackHead.style.backgroundColor="blue";
@@ -223,7 +236,7 @@ function backMusic()
                 snack[i].snackHead.style.gridColumnStart=snack[i].y;
             }
 
-            headIncreamenter();
+            await headIncreamenter();
 
             //create new part of snake
 
@@ -257,7 +270,7 @@ function backMusic()
                     },2000);
             }
 
-            document.querySelector("#score").innerText=`Score : ${snack.length-1}`;
+            scoreDiv.innerText=`Score : ${snack.length-1}`;
 
             creatFood();
         }
@@ -273,12 +286,14 @@ function backMusic()
 document.querySelector("#playBtn").addEventListener("click",()=>{
     
     document.querySelector("#playBtn").remove();
-    document.querySelector("#before-backImage").setAttribute("id","after-backImage");
+    // document.querySelector("#before-backImage").setAttribute("id","after-backImage");
     document.querySelector(".before-game-container").setAttribute("class","after-game-container");
     document.querySelector(".runnig-audio").innerHTML="<audio  class='audio' src='Happy_Kids_Cartoon_Music_Background_Y2bs.Com.m4a' height=0px; autoplay loop></audio>";
     
     
-    
+    document.querySelector("#hiscore").style.opacity=0.7;
+    scoreDiv.style.opacity=0.7;
+
     createHead();
     creatFood();
 
@@ -289,56 +304,58 @@ document.querySelector("#playBtn").addEventListener("click",()=>{
 
 
         // snake : move input
-window.addEventListener("keydown",(e)=>{
-    if(snack[0].x<=18 && snack[0].x>=0 && snack[0].y<=18 && snack[0].y>=0)
-    {
+    window.addEventListener("keydown",(e)=>{
+        // if(snack[0].x<totalRow && snack[0].x>=0 && snack[0].y<totalColumn && snack[0].y>=0)
+        // {
+            
+
+        // }
         if(ismusic)
-        {
-            document.querySelector(".temp-audio").innerHTML="<audio class='audio' src='Fade_In.m4a' height=0px; autoplay ></audio>"
-        }
-        
-        if(e.key=="ArrowUp")
-        {
-         row=1;
-         doun=0;
-         snack[0].snackHead.style.backgroundImage='linear-gradient(to top,blue,lightgreen,lightblue,red)';
-        }
-        else if(e.key=="ArrowDown")
-        {
-         row=1;
-         doun=1;
-         snack[0].snackHead.style.backgroundImage='linear-gradient(to bottom,blue,lightgreen,lightblue,red)';
-        }
-        else if(e.key=="ArrowLeft")
-        {
-         row=0;
-         right=0;
-         snack[0].snackHead.style.backgroundImage='linear-gradient(to left,blue,lightgreen,lightblue,red)';
-        }
-        else if(e.key=="ArrowRight")
-        {
-         row=0;
-         right=1;
-         snack[0].snackHead.style.backgroundImage='linear-gradient(to right,blue,lightgreen,lightblue,red)';
-        }
-        else if(e.key==" "){
-            alert("game paused.....       Enter to paly");
-        }
-        else if (e.key=="m" || e.key=="M")
-        {
-            // mute unmute music
-            backMusic();
-        }
-        else if (e.key=="v" || e.key=="V")
-        {
-            // mute unmute allmusic
-            chackVolume();
-        }
-
-    }
-});
-
-
+            {
+                document.querySelector(".temp-audio").innerHTML="<audio class='audio' src='Fade_In.m4a' height=0px; autoplay ></audio>"
+            }
+            
+            if(e.key=="ArrowUp")
+            {
+            row=0;
+            doun=0;
+            snack[0].snackHead.style.backgroundImage='linear-gradient(to top,blue,lightgreen,lightblue,red)';
+            }
+            else if(e.key=="ArrowDown")
+            {
+            row=0;
+            doun=1;
+            snack[0].snackHead.style.backgroundImage='linear-gradient(to bottom,blue,lightgreen,lightblue,red)';
+            }
+            else if(e.key=="ArrowLeft")
+            {
+            row=1;
+            right=0;
+            snack[0].snackHead.style.backgroundImage='linear-gradient(to left,blue,lightgreen,lightblue,red)';
+            }
+            else if(e.key=="ArrowRight")
+            {
+            row=1;
+            right=1;
+            snack[0].snackHead.style.backgroundImage='linear-gradient(to right,blue,lightgreen,lightblue,red)';
+            }
+            else if(e.key==" "){
+                let audio = document.querySelector(".audio");
+                audio.pause();
+                alert("game paused.....       Enter to paly");
+                audio.play();
+            }
+            else if (e.key=="m" || e.key=="M")
+            {
+                // mute unmute music
+                backMusic();
+            }
+            else if (e.key=="v" || e.key=="V")
+            {
+                // mute unmute allmusic
+                chackVolume();
+            }
+    });
 
 
     window.requestAnimationFrame(main);
@@ -350,7 +367,16 @@ window.addEventListener("keydown",(e)=>{
 // help
 
 document.querySelector("#help").addEventListener("click",()=>{
-    alert("            press keybord key to:    { [ snake up : up arrow ]   [ snake down : down arrow ]  [ snake left : left arrow ]   [ snake right : right arrow ]  [ game pause : space ]   [ mute background: m or M ]    [ mute all music : v or V ]   }")
+    alert(
+        "🐍 Snake Game Controls:\n" +
+        "⬆️ Move Up: Up Arrow (↑)\n" +
+        "⬇️ Move Down: Down Arrow (↓)\n" +
+        "⬅️ Move Left: Left Arrow (←)\n" +
+        "➡️ Move Right: Right Arrow (→)\n" +
+        "⏸️ Pause Game: Spacebar\n" +
+        "🔇 Mute Background: M or m\n" +
+        "🔇 Mute All Music: V or v"
+      );
 });
 
 document.querySelector("#reset-hiscore").addEventListener("click",()=>{
