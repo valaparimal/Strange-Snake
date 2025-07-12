@@ -32,3 +32,4 @@ A fun and unique **Snake game** built using **HTML, CSS, and JavaScript**, featu
 ---
 
 ## 📸 Screenshot
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/6fb537c0-6ec7-4049-ba38-65abb4900ad3" />
