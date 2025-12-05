@@ -1,41 +1,179 @@
 <!DOCTYPE html>
 <html lang="en" style="background:linear-gradient(to right,lightgreen,lightyellow,yellow,green);">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Strange-Snake-Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Strange Snake Game – Play Classic Snake Online | Free Browser Game</title>
+
+    <meta name="description"
+        content="Play Strange Snake Game – a modern, fast, colorful snake game with smooth controls, sound effects, high-score tracking, and mobile support. Enjoy a fun and challenging version of the classic Snake game directly in your browser. No download required.">
+
+    <meta name="keywords"
+        content="snake game, online snake game, classic snake, play snake free, browser game, html5 snake game, mobile snake game, fun games, Strange Snake Game">
+
+    <meta name="game-info" content="Strange Snake is a fun and challenging snake game built using HTML, CSS, and JavaScript. It includes high-score saving, smooth movement, mobile support, sound effects, food generation, and responsive grid-based gameplay.">
+
     <link rel="stylesheet" href="game.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Strange Snake Game",
+  "description": "Strange Snake is a modern web-based snake game featuring smooth controls, animations, sound effects, high scores, and mobile-friendly design. Play instantly without downloads.",
+  "genre": ["Arcade", "Puzzle", "Strategy"],
+  "applicationCategory": "Game",
+  "operatingSystem": "Web Browser",
+  "url": "https://your-website-url.com",
+  "author": {
+    "@type": "Person",
+    "name": "Parimal Nareshbhai Vala"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Parimal Nareshbhai Vala"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Strange Snake Studio"
+  }
+}
+</script>
+
 </head>
+
 <body>
-    <header>
-        <h1>Strange Snake</h1>
-    </header>
+    <div class="header">
+        <div id="title">
+            <h1>Strange Snake</h1>
+        </div>
+        <div id="more">
+            <div id="more-symbole" class="symbole">☰</div>
+            <div class="overlay"></div>
+            <div id="more-details" class="small-screen">
+                <div id="hiscore"></div>
+                <div id="reset-hiscore">Reset Hi Score</div>
+            </div>
+        </div>
+    </div>
     <main>
         <div class="musicBtn"></div>
         <div class="allMusicBtn"></div>
-        <p id="msg">....Switch to desktop site....</p>
         <div class="backImage-container">
             <div id="before-backImage"></div>
-        </div>
-        <div class="before-game-container">
-            <div class="game-box"></div>
-        </div>
-        <div class="playBtn-container">
             <button id="playBtn">
                 Play
             </button>
         </div>
-        <span id="score">
-            Score : 0
-        </span>
-        <span id="hiscore"></span>
-        <span id="reset-hiscore">Reset Hi Score</span>
-        <div class="before-gameOver-container">
-           <div id="gameOver">
-                <p>Game Over</p>
-           </div>
+        <div class="before-game-container">
+            <div class="game-box"></div>
         </div>
+      
+        <div class="about-game">
+    <h2>Welcome to Strange Snake 🐍</h2>
+    <p>
+        Strange Snake is a modern, colorful, and addictive version of the classic Snake game. 
+        With smooth controls, bright graphics, and fun sound effects, it delivers a quick and exciting 
+        gaming experience for players of all ages.
+    </p>
+
+    <h3>🎮 How to Play</h3>
+    <ul>
+        <li>Use Arrow Keys to move the snake</li>
+        <li>Eat the food to grow and increase your score</li>
+        <li>Avoid hitting walls or your own tail</li>
+        <li>Press <b>Space</b> to pause the game</li>
+        <li>Press <b>M</b> to mute background sound</li>
+        <li>Press <b>V</b> to mute all sound effects</li>
+    </ul>
+
+    <h3>⭐ Features</h3>
+    <ul>
+        <li>Beautiful gradient background and smooth UI</li>
+        <li>Hi-Score is saved automatically</li>
+        <li>Mobile-friendly responsive layout</li>
+        <li>Fun sound effects and music</li>
+        <li>Simple, fast, and enjoyable gameplay</li>
+    </ul>
+
+    <h3>📱 Play Anywhere</h3>
+    <p>
+        Strange Snake works on phones, tablets, laptops, and desktops — no download needed.  
+        Just tap <b>Play</b> and enjoy!
+    </p>
+</div>
+
+
+<div class="features-section">
+    <h2>Why Play Strange Snake? 🐍✨</h2>
+    <p>
+        This game is designed for quick fun, stress relief, and improving your focus. Whether you 
+        are waiting somewhere, taking a short break, or just want to relax, Strange Snake is perfect 
+        for a few minutes of enjoyment.
+    </p>
+
+    <div class="feature-grid">
+        <div class="feature-box">
+            <h4>⚡ Fast Gameplay</h4>
+            <p>Enjoy smooth and responsive controls that make the snake easy and fun to control.</p>
+        </div>
+        <div class="feature-box">
+            <h4>🌈 Colorful Design</h4>
+            <p>Beautiful backgrounds and bright food colors make the game visually appealing.</p>
+        </div>
+        <div class="feature-box">
+            <h4>🔊 Sound Effects</h4>
+            <p>Every move and event includes fun sounds for an immersive experience.</p>
+        </div>
+        <div class="feature-box">
+            <h4>💾 Auto Save Score</h4>
+            <p>Your highest score is saved automatically — no login, no account needed!</p>
+        </div>
+    </div>
+</div>
+
+<div class="tips-section">
+    <h2>Pro Tips to Score Higher ⭐</h2>
+    <ul>
+        <li>Stay near the center to avoid sudden crashes.</li>
+        <li>Make smooth turns — don’t rush into corners.</li>
+        <li>Try creating loops to trap your food safely.</li>
+        <li>Practice on mobile to improve reaction speed.</li>
+        <li>Play daily to beat your own Hi-Score.</li>
+    </ul>
+</div>
+
+<div class="responsiveness-info">
+    <h2>Fully Responsive & Mobile Friendly 📱</h2>
+    <p>
+        Strange Snake is designed to adjust automatically on any screen size.  
+        From large desktops to small smartphones, the gameplay remains smooth, centered, 
+        and easy to control.
+    </p>
+</div>
+
+<div class="safety-info">
+    <h2>Safe & Lightweight ✔️</h2>
+    <p>
+        This game does not collect any personal data, does not require login, and runs directly 
+        in your browser. It is super lightweight, loads fast, and consumes almost no memory.
+    </p>
+</div>
+
+<div class="footer-note">
+    <h3>Ready to Play? 🎮</h3>
+    <p>
+        Hit the <strong>Play</strong> button above and enjoy the fun — good luck beating your Hi-Score!
+    </p>
+</div>
+
+
+
+
         <div class="runnig-audio"></div>
         <div class="temp-audio"></div>
         <div class="hiscore-audio"></div>
@@ -45,4 +183,5 @@
     </footer>
     <script src="game.js"></script>
 </body>
+
 </html>
