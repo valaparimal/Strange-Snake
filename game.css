@@ -1,13 +1,15 @@
-/* @media (min-width: 1050px) {
-
-    
-  } */
-
-
 * {
     padding: 0%;
     margin: 0%;
 }
+
+html, body {
+    overscroll-behavior: none; 
+    max-width: 100%;
+    max-height: 100%;
+    /* overflow-x: hidden; */
+}
+
 
 #msg {
     display: none;
