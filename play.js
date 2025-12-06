@@ -15,7 +15,7 @@ if(HiScore === null)
     localStorage.setItem("HiScore","0");
     HiScore=0;
 }
-document.querySelector("#hiscore").innerText=`Hi Score :${HiScore}`;
+// document.querySelector("#hiscore").innerText=`Hi Score :${HiScore}`;
 
 
 function createHead(){
@@ -103,7 +103,7 @@ function headIncreamenter(){
         }
 
 
-        console.log(" snack 0 x="+snack[0].x+ " y= "+snack[0].y);
+        // console.log(" snack 0 x="+snack[0].x+ " y= "+snack[0].y);
 }
 
 
@@ -177,16 +177,16 @@ function checkEat(){
             snack[0].snackHead.style.border="1px solid black";
             gameBox.appendChild(snack[0].snackHead);
 
-            console.log(HiScore);
-            console.log(snack.length-1);
-            if(snack.length-2 == HiScore)
-            {
-                console.log("hi");
-                    chackVolume();
-                    setTimeout(()=>{
-                        chackVolume();
-                    },2000);
-            }
+            // console.log(HiScore);
+            // console.log(snack.length-1);
+            // if(snack.length-2 == HiScore)
+            // {
+            //     // console.log("hi");
+            //         chackVolume();
+            //         setTimeout(()=>{
+            //             chackVolume();
+            //         },2000);
+            // }
 
             scoreDiv.innerText=`Score : ${snack.length-1}`;
 
@@ -303,7 +303,7 @@ function start(){
     document.querySelector(".runnig-audio").innerHTML="<audio  class='audio' src='Happy_Kids_Cartoon_Music_Background_Y2bs.Com.m4a' height=0px; autoplay loop></audio>";
     
     
-    document.querySelector("#hiscore").style.opacity=0.7;
+    // document.querySelector("#hiscore").style.opacity=0.7;
     scoreDiv.style.opacity=0.7;
 
     createHead();
@@ -438,3 +438,20 @@ btn.addEventListener("click", () => {
         btn.textContent = "⛶";     // enter symbol
     }
 });
+
+
+// rotation
+
+function checkOrientation() {
+    if (window.innerHeight > window.innerWidth) {
+        // Portrait → rotate
+        document.querySelector("body").classList.add("rotate-screen");
+    } else {
+        // Landscape → normal
+        document.querySelector("body").classList.remove("rotate-screen");
+    }
+}
+
+window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("orientationchange", checkOrientation);
