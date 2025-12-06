@@ -416,3 +416,12 @@ window.addEventListener("touchmove", function(e){
 });
 
 
+document.querySelector(".musicBtn").addEventListener("click",()=>{
+    backMusic();
+});
+
+document.querySelector(".allMusicBtn").addEventListener("click",()=>{
+    chackVolume();
+});
+
+
