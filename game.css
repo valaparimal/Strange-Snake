@@ -1,3 +1,4 @@
+
 * {
     padding: 0%;
     margin: 0%;
@@ -200,6 +201,7 @@ body {
     left: 2%;
     height: 5rem;
     width: 7rem;
+    opacity: 0.6;
 }
 
 .allMusicBtn {
@@ -209,6 +211,7 @@ body {
     left: 2%;
     height: 5rem;
     width: 7rem;
+    opacity: 0.6;
 }
 
 #help {
@@ -234,6 +237,8 @@ body {
         font-size: 2rem;
         border-radius: 2rem;
     }
+
+    
 
     #hiscore,
     #score,
@@ -269,9 +274,25 @@ body {
         z-index: 11;
     }
 
+    .musicBtn {
+    font-size: 2rem;
+}
+
+.allMusicBtn {
+    font-size: 2rem;
+}
+
 }
 
 @media screen and (max-width:310px) {
+
+    .musicBtn {
+    font-size: 1rem;
+}
+
+.allMusicBtn {
+    font-size: 1rem;
+}
 
     #title,
     #hiscore,
