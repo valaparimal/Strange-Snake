@@ -425,3 +425,16 @@ document.querySelector(".allMusicBtn").addEventListener("click",()=>{
 });
 
 
+// full screan
+
+const btn = document.getElementById("fullscreenBtn");
+
+btn.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        btn.textContent = "🗗";     // exit symbol
+    } else {
+        document.exitFullscreen();
+        btn.textContent = "⛶";     // enter symbol
+    }
+});
