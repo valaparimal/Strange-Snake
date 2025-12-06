@@ -283,7 +283,7 @@ function backMusic()
                 snack[i].y=snack[i-1].y;
                 snack[i].snackHead.style.gridRowStart=snack[i].x;
                 snack[i].snackHead.style.gridColumnStart=snack[i].y;
-                console.log("snack "+i+" x="+snack[i].x+" y="+snack[i].y);
+                // console.log("snack "+i+" x="+snack[i].x+" y="+snack[i].y);
             }
             await headIncreamenter();
 
@@ -445,10 +445,12 @@ btn.addEventListener("click", () => {
 function checkOrientation() {
     if (window.innerHeight > window.innerWidth) {
         // Portrait → rotate
-        document.querySelector("body").classList.add("rotate-screen");
+        document.querySelector(".after-game-container").classList.add("rotate-screen");
+        document.getElementById("rotate-alert").style.display="block";
     } else {
         // Landscape → normal
-        document.querySelector("body").classList.remove("rotate-screen");
+        document.querySelector(".after-game-container").classList.remove("rotate-screen");
+        document.getElementById("rotate-alert").style.display="none";
     }
 }
 
