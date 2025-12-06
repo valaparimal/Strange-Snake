@@ -6,9 +6,7 @@
 
 html, body {
     overscroll-behavior: none; 
-    max-width: 100%;
-    max-height: 100%;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 
 
@@ -230,7 +228,7 @@ body {
 }
 
 
-@media screen and (max-width:780px) {
+@media screen and (max-width:780px) , (max-height:400px){
     #playBtn {
         height: 4rem;
         width: 8rem;
@@ -284,7 +282,7 @@ body {
 
 }
 
-@media screen and (max-width:310px) {
+@media screen and (max-width:310px) , (max-height:310px){
 
     .musicBtn {
     font-size: 1rem;
@@ -300,6 +298,7 @@ body {
     #reset-hiscore,
     #help {
         font-size: small;
+        padding: 10px;
     }
 
     #more-details {
@@ -466,3 +465,16 @@ body {
     width: 40px;
     height: 40px;
 }
+
+/* rotation */
+
+.rotate-screen {
+    transform: rotate(90deg);
+    width: 100vh; 
+    height: 100vw;
+    transform-origin: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
