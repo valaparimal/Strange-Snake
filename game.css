@@ -467,10 +467,10 @@ body {
 }
 
 /* rotation */
-
+/* no rotation but adjust height */
 .rotate-screen {
     transform: rotate(90deg);
-    width: 100vh; 
+    /* width: 100vh;  */
     height: 100vw;
     transform-origin: center center;
     position: absolute;
@@ -485,7 +485,5 @@ body {
     left: 10px;
     display: none;
     font-size: xx-large;
-    color:red;
+    color: red;
 }
-
-
